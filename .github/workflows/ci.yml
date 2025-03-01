@@ -1,7 +1,8 @@
 name: CI pipeline
 on: [push, pull_request]
+
 jobs:
-  build:
+  initial-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
