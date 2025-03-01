@@ -14,4 +14,13 @@ jobs:
       - name: Generate ASCII Artwork
         run: cowsay -f dragon "Run for cover, I'm a dragon!" >> dragon.txt
 
+      - name: Test file exist
+        run: grep -i "dragon" dragon.txt
+
+      - name: Read File
+        run: cat dragon.txt
+    
+      - name: List files
+        run: ls -al
+
       
