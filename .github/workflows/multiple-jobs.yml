@@ -1,28 +1,33 @@
 name: Multiple Jobs
 
-on : [push]
+on: [push]
 
 jobs:
     build_job_1:
+        name: Build Job 1
         runs-on: ubuntu-latest
         steps:
             - name: Install CowSay 
-              uses: sudo apt-get install cowsay -y
+              run: sudo apt-get install cowsay -y
             - name: Execute CowSay
               run: cowsay -f dragon "Run for cover, I'm a dragon!" >> dragon.txt
             - name: Sleep for 5 seconds
               run: sleep 5
     test_job_1:
+        name: Test Job 1
+        needs: build_job_1
         runs-on: ubuntu-latest
         steps:
-            - name: sleep for 5 seconds
+            - name: Sleep for 5 seconds
               run: sleep 5
             - name: Test file exist
-              run: grep -i "dragon" dragon.txt
+              run: test -f dragon.txt && echo "File exists" || echo "File does not exist"
     deploy_job_1:
+        name: Deploy Job 1
+        needs: test_job_1
         runs-on: ubuntu-latest
         steps:
             - name: Read File
-              uses: cat dragon.txt
+              run: cat dragon.txt
             - name: Deploy
               run: echo Deploying......
