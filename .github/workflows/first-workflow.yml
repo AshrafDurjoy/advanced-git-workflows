@@ -1,0 +1,9 @@
+name: First Workflow
+on: [push]
+
+jobs:
+  hello:
+    runs_on: self-hosted
+    steps:
+      - name: Hello world
+        run: echo "Hello world"
