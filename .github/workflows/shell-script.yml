@@ -2,7 +2,7 @@ name: Cowsay Workflow
 on: [push]
 
 jobs:
-  generate_ascii_artwork:
+  execute_shell_script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
