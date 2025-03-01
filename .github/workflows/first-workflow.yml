@@ -1,9 +1,0 @@
-name: First Workflow
-on: [push]
-
-jobs:
-  hello:
-    runs-on: self-hosted
-    steps:
-      - name: Hello world
-        run: echo "Hello world"
