@@ -28,17 +28,17 @@ jobs:
               with:
                 name: dragon-text-file
             - name: Test file exist
-              run: test -f dragon-text-file/dragon.txt && echo "File exists" || echo "File does not exist"
+              run: grep -i "dragon" dragon.txt
     deploy_job_1:
         name: Deploy Job 1
         needs: test_job_1
         runs-on: ubuntu-latest
         steps:
             - name: Download Dragon text file
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: dragon-text-file
             - name: Read File
-              run: cat dragon-text-file/dragon.txt
+              run: cat dragon-text-file
             - name: Deploy
               run: echo "Deploying......"
