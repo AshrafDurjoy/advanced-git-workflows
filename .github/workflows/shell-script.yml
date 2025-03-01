@@ -1,0 +1,18 @@
+name: Cowsay Workflow
+on: [push]
+
+jobs:
+  generate_ascii_artwork:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+    
+      - name: List files
+        run: ls -al
+
+      - name: Executing Shell Script
+        run: |
+          chmod +x ascci-script.sh
+            ./ascci-script.sh
+      
